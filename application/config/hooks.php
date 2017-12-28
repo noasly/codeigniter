@@ -45,25 +45,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$hook['post_controller_constructor'][] = [
-	'class'    => 'SiteBuilder',
-	'function' => 'loadHeader',
-	'filename' => 'SiteBuilder.php',
-	'filepath' => 'hooks',
-	'params' => ''
-];
+// cli(crontab) 모드가 아닌 경우에 실행
+if(PHP_SAPI !== 'cli') {
+    $hook['post_controller_constructor'][] = [
+        'class'    => 'SiteBuilder',
+        'function' => 'loadHeader',
+        'filename' => 'SiteBuilder.php',
+        'filepath' => 'hooks',
+        'params' => ''
+    ];
 
-$hook['post_system'][] = [
-	'class'    => 'SiteBuilder',
-	'function' => 'loadFooter',
-	'filename' => 'SiteBuilder.php',
-	'filepath' => 'hooks',
-	'params' => ''
-];
+    $hook['post_system'][] = [
+        'class'    => 'SiteBuilder',
+        'function' => 'loadFooter',
+        'filename' => 'SiteBuilder.php',
+        'filepath' => 'hooks',
+        'params' => ''
+    ];
 
-$hook['post_controller_constructor'][] = [
-    'class'     => 'SiteBuilder',
-    'function'  => 'checkPermission',
-    'filename'  => 'SiteBuilder.php',
-    'filepath'  => 'hooks'
-];
+    $hook['post_controller_constructor'][] = [
+        'class'     => 'SiteBuilder',
+        'function'  => 'checkPermission',
+        'filename'  => 'SiteBuilder.php',
+        'filepath'  => 'hooks'
+    ];
+}
