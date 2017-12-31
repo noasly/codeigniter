@@ -53,3 +53,15 @@ SCRIPT;
         return $script;
     }
 }
+
+if(!function_exists('makeLog')) {
+    /**
+     * create log file
+     * @param string $fileName
+     * @param string $message
+     */
+    function makeLog($fileName, $message)
+    {
+
+    }
+}
